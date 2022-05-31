@@ -13,6 +13,7 @@
 .flexbox-container{
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   font-family: 'Saira Extra Condensed';
 }
 header{
@@ -34,57 +35,6 @@ h1{
   line-height: 4vh;
   font-size: 7vh;
 }
-.button-section{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  line-height: 5vh;
-  font-size: 2vh;
-}
-.winner{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  line-height: 5vh;
-  font-size: 4vh;
-}
-.cards{
-  display: flex;
-  width: 100%;
-  font-size: 2vh;
-}
-.players{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 50%;
-}
-.players h2, .players span{
-  display: flex;
-  justify-content: center;
-}
-@media not screen and (max-width : 1000px){
-  img{
-    display: flex;
-    margin: 0 auto;
-  }
-}
-#gameend{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  line-height: 5vh;
-  font-size: 4vh;
-}
-#newgame{
-  margin-top: 2%;
-  line-height: 5vh;
-  font-size: 2vh;
-}
 
 /******************************************
 /* ADDITIONAL STYLES
@@ -96,44 +46,3 @@ header{
 a{
   text-decoration: none;
   color: white;
-}
-button {
-  padding: 1.3em 3em;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  color: #000;
-  background-color: #fff;
-  border: none;
-  border-radius: 45px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
-}
-
-button:hover {
-  background-color: #05c71e;
-  box-shadow: 0px 15px 20px #068016;
-  color: #fff;
-  transform: translateY(-7px);
-}
-
-button:active {
-  transform: translateY(-1px);
-}
-
-#warbtn {
-  display: none;
-}
-#checkforwinner{
-  display: none;
-}
-.game{
-  display: flex;
-}
-#gameend{
-  display: none;
-}
-.score{
-  display: flex;
-}
