@@ -40,6 +40,7 @@ function update(){
     context.fillRect(foodX, foodY, blockSize, blockSize);
 
     if(snakeX === foodX && snakeY === foodY){
+        body.push([foodX, foodY]);//adds to body when food is eaten
         placeFoodRandomly();
     }
 
@@ -47,6 +48,19 @@ function update(){
     snakeX += velocityX * blockSize;
     snakeY += velocityY * blockSize;
     context.fillRect(snakeX, snakeY, blockSize, blockSize);
+    
+    //creates a body for the food the snake eats
+    for(let i = 0; i < body.length; i++){
+        context.fillRect(body[i][0], body[i][1], blockSize, blockSize);
+    }
+
+    for(let i = body.length - 1; i > 0; i--){
+        body[i] = body[i - 1];
+    }
+
+    if(body.length){
+        body[0] = [snakeX, snakeY];
+    }
 }
 
 function placeFoodRandomly(){
