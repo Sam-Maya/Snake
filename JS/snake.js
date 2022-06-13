@@ -36,9 +36,14 @@ window.onload = function() {
         blockSize = 15;
         snakeX = blockSize * 10;
         snakeY = blockSize * 10;
+        board.width = cols * blockSize;
+        board.height = rows * blockSize;
+    }else{
+        snakeX = blockSize * 10;
+        snakeY = blockSize * 10;
+        board.width = cols * blockSize;
+        board.height = rows * blockSize;
     }
-    board.width = cols * blockSize;
-    board.height = rows * blockSize;
     context = board.getContext('2d'); // lets you "draw" on the board
 
     placeFoodRandomly();
@@ -68,7 +73,7 @@ function update(){
     context.fillRect(snakeX, snakeY, blockSize, blockSize);
 
     //game over conditions
-    if(snakeX < 0 || snakeX > cols*blockSize || snakeY < 0 || snakeY > rows*blockSize){
+    if(snakeX < 0 || snakeX > cols*blockSize - 1 || snakeY < 0 || snakeY > rows*blockSize - 1){
         gameOver = true;
         alert("Game Over");
     }
