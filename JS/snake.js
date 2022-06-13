@@ -23,11 +23,22 @@ let velocityY = 0;
 //is game over
 let gameOver = false;
 
+//used to handle swipes on mobile
+let touchstartX = 0;
+let touchstartY = 0;
+let touchendX = 0;
+let touchendY = 0;
+
 
 window.onload = function() {
     board = document.querySelector("#board"); 
-    board.height = rows * blockSize;
+    if(window.innerWidth <= 700){
+        blockSize = 15;
+        snakeX = blockSize * 10;
+        snakeY = blockSize * 10;
+    }
     board.width = cols * blockSize;
+    board.height = rows * blockSize;
     context = board.getContext('2d'); // lets you "draw" on the board
 
     placeFoodRandomly();
@@ -104,5 +115,39 @@ function move(input){
     else if(input.code == "ArrowRight" && velocityX !== -1){
         velocityX = 1;
         velocityY = 0;
+    }
+}
+
+//handles swipes on mobile
+document.addEventListener('touchstart', function(event) {
+    touchstartX = event.changedTouches[0].screenX;
+    touchstartY = event.changedTouches[0].screenY;
+}, false);
+
+document.addEventListener('touchend', function(event) {
+    touchendX = event.changedTouches[0].screenX;
+    touchendY = event.changedTouches[0].screenY;
+    handleGesture();
+}, false); 
+
+function handleGesture() {
+    if (touchendX + 100 < touchstartX && velocityX !== 1){
+        velocityX = -1;
+        velocityY = 0;
+    }
+    
+    else if (touchendX > touchstartX + 100 && velocityX !== -1){
+        velocityX = 1;
+        velocityY = 0;
+    }
+    
+    else if (touchendY + 100 < touchstartY && velocityY !== 1){
+        velocityX = 0;
+        velocityY = -1;
+    }
+    
+    else if (touchendY > touchstartY + 100&& velocityY !== -1){
+        velocityX = 0;
+        velocityY = 1;
     }
 }
