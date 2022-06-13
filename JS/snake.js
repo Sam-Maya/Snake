@@ -20,6 +20,9 @@ let foodY = undefined;
 let velocityX = 0;
 let velocityY = 0;
 
+//is game over
+let gameOver = false;
+
 
 window.onload = function() {
     board = document.querySelector("#board"); 
@@ -33,6 +36,10 @@ window.onload = function() {
 }
 
 function update(){
+    if (gameOver){
+        return;
+    }
+
     context.fillStyle = "black";
     context.fillRect(0, 0, board.width, board.height);
 
@@ -48,8 +55,21 @@ function update(){
     snakeX += velocityX * blockSize;
     snakeY += velocityY * blockSize;
     context.fillRect(snakeX, snakeY, blockSize, blockSize);
+
+    //game over conditions
+    if(snakeX < 0 || snakeX > cols*blockSize || snakeY < 0 || snakeY > rows*blockSize){
+        gameOver = true;
+        alert("Game Over");
+    }
+
+    for(let i = 0; i < body.length; i++){
+        if(snakeX == body[i][0] && snakeY == body[i][1]){
+            gameOver = true;
+            alert("Game Over");
+        }
+    }
     
-    //creates a body for the food the snake eats
+    //creates a body from the food the snake eats
     for(let i = 0; i < body.length; i++){
         context.fillRect(body[i][0], body[i][1], blockSize, blockSize);
     }
