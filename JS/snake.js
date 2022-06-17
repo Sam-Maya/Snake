@@ -75,13 +75,13 @@ function update(){
     //game over conditions
     if(snakeX < 0 || snakeX > cols*blockSize - 1 || snakeY < 0 || snakeY > rows*blockSize - 1){
         gameOver = true;
-        alert("Game Over");
+        if(!alert('Game Over :(')){window.location.reload();};
     }
 
     for(let i = 0; i < body.length; i++){
         if(snakeX == body[i][0] && snakeY == body[i][1]){
             gameOver = true;
-            alert("Game Over");
+            if(!alert('Game Over :(')){window.location.reload();};
         }
     }
     
