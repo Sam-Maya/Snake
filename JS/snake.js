@@ -56,6 +56,11 @@ function update(){
         return;
     }
 
+    if(body.length === 400){
+        gameOver = true;
+        if(!alert('You win :)')){window.location.reload();};
+    }
+
     context.fillStyle = "black";
     context.fillRect(0, 0, board.width, board.height);
 
