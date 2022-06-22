@@ -32,7 +32,7 @@ let touchendY = 0;
 
 window.onload = function() {
     board = document.querySelector("#board"); 
-    if(window.innerWidth <= 700){
+    if(window.innerWidth <= 700){//shirks board for mobile
         blockSize = 15;
         snakeX = blockSize * 10;
         snakeY = blockSize * 10;
