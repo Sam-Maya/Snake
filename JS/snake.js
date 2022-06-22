@@ -140,7 +140,7 @@ document.addEventListener('touchend', function(event) {
     handleGesture();
 }, false); 
 
-function handleGesture() {
+function handleGesture() {// I add 100 so the micro movements in any direction are not registered
     if (touchendX + 100 < touchstartX && velocityX !== 1){
         velocityX = -1;
         velocityY = 0;
